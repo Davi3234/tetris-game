@@ -3,6 +3,7 @@ import { Board } from "./Board";
 import { Piece } from "./Piece";
 import { Renderer } from "./Renderer";
 import { GameRules } from "./GameRules";
+import { KeyboardHandler } from "./KeyBoardHandler";
 
 export class Game {
   board: Board;
@@ -10,6 +11,7 @@ export class Game {
   currentPiece: Piece;
   piecesStorage: Piece[];
   gameRules: GameRules;
+  keyboardHandler: KeyboardHandler;
 
   constructor(canvas: HTMLCanvasElement) {
     this.board = new Board(10, 20);
@@ -17,6 +19,7 @@ export class Game {
     this.currentPiece = new Piece('initial', [[1]], 'blue');
     this.currentPiece.position = { x: 3, y: 0 };
     this.gameRules = new GameRules(this);
+    this.keyboardHandler = new KeyboardHandler(this.gameRules);
     this.gameRules.initializeBoard();
   }
 
@@ -39,7 +42,7 @@ export class Game {
       this.loadNewPiece();
     }
     else {
-      this.gameRules.movePieceDown(newPosition);
+      this.gameRules.movePieceDown();
     }
   }
 
