@@ -1,4 +1,3 @@
-import { Pieces } from "../consts/Pieces";
 import { Game } from "./Game";
 
 export class GameRules {
@@ -32,9 +31,38 @@ export class GameRules {
     return false;
   }
 
-  movePieceDown(newPosition: { x: number, y: number }){
+  movePieceDown(){
+    const newPosition = { x: this.game.currentPiece.position.x, y: this.game.currentPiece.position.y + 1 };
     this.game.board.cleanPiece(this.game.currentPiece);
     this.game.currentPiece.position = newPosition;
     this.game.addPiece();
+  }
+
+  movePieceLeft(){
+    const newPosition = { x: this.game.currentPiece.position.x + 1, y: this.game.currentPiece.position.y };
+    this.game.board.cleanPiece(this.game.currentPiece);
+    this.game.currentPiece.position = newPosition;
+    this.game.addPiece();
+  }
+  movePieceRight(){
+    const newPosition = { x: this.game.currentPiece.position.x - 1, y: this.game.currentPiece.position.y };
+    this.game.board.cleanPiece(this.game.currentPiece);
+    this.game.currentPiece.position = newPosition;
+    this.game.addPiece();
+  }
+  movePieceDownFast(){
+    
+  }
+  rotatePiece(){
+    
+  }
+  leftRotatePiece(){
+    
+  }
+  rightRotatePiece(){
+    
+  }
+  holdPiece(){
+    
   }
 }
