@@ -2,20 +2,22 @@ import { Pieces } from "../consts/Pieces";
 import { Board } from "./Board";
 import { Piece } from "./Piece";
 import { Renderer } from "./Renderer";
+import { GameRules } from "./GameRules";
 
 export class Game {
   board: Board;
   renderer: Renderer;
   currentPiece: Piece;
   piecesStorage: Piece[];
+  gameRules: GameRules;
 
   constructor(canvas: HTMLCanvasElement) {
     this.board = new Board(10, 20);
     this.renderer = new Renderer(canvas);
+    this.currentPiece = new Piece('initial', [[1]], 'blue');
     this.currentPiece.position = { x: 3, y: 0 };
-    this.initializePieces();
-    this.pickNextPiece();
-    this.addPiece();
+    this.gameRules = new GameRules(this);
+    this.gameRules.initializeBoard();
   }
 
   start() {
@@ -31,32 +33,14 @@ export class Game {
 
   update() {
     const newPosition = { x: this.currentPiece.position.x, y: this.currentPiece.position.y + 1 };
-    
-    if (this.checkCollision(newPosition)) {
-      this.addPiece();
-      this.currentPiece.position = { x: 3, y: 0 };
-      this.pickNextPiece();
+
+    //Moving down
+    if (this.gameRules.checkCollision(newPosition)) {
+      this.loadNewPiece();
     }
     else {
-      this.board.cleanPiece(this.currentPiece);
-      this.currentPiece.position = newPosition;
-      this.addPiece();
+      this.gameRules.movePieceDown(newPosition);
     }
-  }
-
-  checkCollision(newPosition: { x: number, y: number }): boolean {
-    for (let i = 0; i < this.currentPiece.shape.length; i++) {
-      for (let j = 0; j < this.currentPiece.shape[i].length; j++) {
-        if (this.currentPiece.shape[i][j] && 
-            (newPosition.y + i >= this.board.height || 
-             newPosition.x + j < 0 || 
-             newPosition.x + j >= this.board.width || 
-             this.board.grid[newPosition.y + i]?.[newPosition.x + j] !== 0)) {
-          return true;
-        }
-      }
-    }
-    return false;
   }
 
   render() {
@@ -65,6 +49,12 @@ export class Game {
 
   addPiece(){
     this.board.addPiece(this.currentPiece);
+  }
+
+  loadNewPiece(){
+    this.addPiece();
+    this.currentPiece.position = { x: 3, y: 0 };
+    this.pickNextPiece();
   }
 
   initializePieces(){
@@ -90,4 +80,5 @@ export class Game {
     this.currentPiece.position = position;
     this.piecesStorage.shift();
   }
+
 }
