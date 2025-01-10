@@ -15,7 +15,7 @@ export class Renderer {
       for (let x = 0; x < board[y].length; x++) {
         const cell = board[y][x];
         if (cell.value) {
-          this.context.fillStyle = cell.color || 'blue'; // Use a cor da peça ou azul como fallback
+          this.context.fillStyle = cell.color || 'blue';
           this.context.fillRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize);
         }
       }

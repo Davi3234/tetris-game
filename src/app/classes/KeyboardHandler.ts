@@ -1,4 +1,4 @@
-import { GameRules } from "./GameRules";
+import { GameRules } from "./rules/GameRules";
 
 export class KeyboardHandler {
   gameRules: GameRules;
@@ -24,18 +24,18 @@ export class KeyboardHandler {
         this.gameRules.movePieceDown();
         break;
       case "ArrowUp":
-        this.gameRules.rotatePiece();
+        // this.gameRules.rotatePiece();
         break;
       case " ":
         this.gameRules.movePieceDownFast();
         break;
-      case "KeyZ":
+      case "z":
         this.gameRules.leftRotatePiece();
         break;
-      case "KeyX":
+      case "x":
         this.gameRules.rightRotatePiece();
         break;
-      case "KeyC":
+      case "c":
         this.gameRules.holdPiece();
         break;
       default:
