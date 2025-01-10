@@ -3,7 +3,7 @@ import { Board } from "./Board";
 import { Piece } from "./Piece";
 import { Renderer } from "./Renderer";
 import { GameRules } from "./GameRules";
-import { KeyboardHandler } from "./KeyBoardHandler";
+import { KeyboardHandler } from "./KeyboardHandler";
 
 export class Game {
   board: Board;
@@ -58,10 +58,12 @@ export class Game {
     this.addPiece();
     this.currentPiece.position = { x: 3, y: 0 };
     this.pickNextPiece();
+    this.addRandomPiece();
   }
 
   initializePieces(){
-    this.piecesStorage = Pieces;
+    //Cloning object
+    this.piecesStorage = JSON.parse(JSON.stringify(Pieces));
     this.shufflePieces();
   }
 
