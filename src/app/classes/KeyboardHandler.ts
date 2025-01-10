@@ -26,7 +26,7 @@ export class KeyboardHandler {
       case "ArrowUp":
         this.gameRules.rotatePiece();
         break;
-      case "Space":
+      case " ":
         this.gameRules.movePieceDownFast();
         break;
       case "KeyZ":
@@ -41,5 +41,6 @@ export class KeyboardHandler {
       default:
         break;
     }
+    this.gameRules.game.render();
   }
 }
