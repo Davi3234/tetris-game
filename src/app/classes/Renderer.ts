@@ -9,12 +9,13 @@ export class Renderer {
     this.tileSize = tileSize;
   }
 
-  render(board: number[][]) {
+  render(board: ({ value: number; color: string })[][]) {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     for (let y = 0; y < board.length; y++) {
       for (let x = 0; x < board[y].length; x++) {
-        if (board[y][x]) {
-          this.context.fillStyle = 'blue';
+        const cell = board[y][x];
+        if (cell.value) {
+          this.context.fillStyle = cell.color || 'blue'; // Use a cor da peça ou azul como fallback
           this.context.fillRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize);
         }
       }
