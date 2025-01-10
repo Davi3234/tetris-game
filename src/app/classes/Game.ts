@@ -30,8 +30,10 @@ export class Game {
   gameLoop() {
     setInterval(() => {
       this.update();
-      this.render();
     }, 1000);
+    setInterval(() => {
+      this.render();
+    }, 1)
   }
 
   update() {
@@ -63,7 +65,7 @@ export class Game {
 
   initializePieces(){
     //Cloning object
-    this.piecesStorage = JSON.parse(JSON.stringify(Pieces));
+    this.piecesStorage = [...Pieces];
     this.shufflePieces();
   }
 
