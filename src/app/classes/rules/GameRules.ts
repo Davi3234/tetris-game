@@ -63,16 +63,20 @@ export class GameRules {
 
   leftRotatePiece() {
     const newShape = this.rotationRules.rotateLeft(this.game.currentPiece);
+    this.game.board.cleanPiece(this.game.currentPiece);
     if(newShape){
       this.game.currentPiece.shape = newShape;
     }
+    this.updatePiecePosition(this.game.currentPiece.position);
   }
 
   rightRotatePiece() {
     const newShape = this.rotationRules.rotateRight(this.game.currentPiece);
+    this.game.board.cleanPiece(this.game.currentPiece);
     if(newShape){
       this.game.currentPiece.shape = newShape;
     }
+    this.updatePiecePosition(this.game.currentPiece.position);
   }
 
   holdPiece() {

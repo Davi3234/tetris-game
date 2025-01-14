@@ -16,6 +16,10 @@ export class RotationRules{
 
     piece.rotation++;
 
+    if(piece.rotation > piece.maxRotation){
+      piece.rotation = 0;
+    }
+
     return findedRotation?.rotations[piece.rotation+1];
   }
   rotateRight(piece: Piece){
@@ -25,6 +29,10 @@ export class RotationRules{
     });
 
     piece.rotation--;
+
+    if(piece.rotation < 0){
+      piece.rotation = 0;
+    }
 
     return findedRotation?.rotations[piece.rotation];
   }
