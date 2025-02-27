@@ -79,6 +79,10 @@ export class GameRules {
     this.updatePiecePosition(this.game.currentPiece.position);
   }
 
+  rotatePieceToNext(){
+    this.rightRotatePiece();
+  }
+
   holdPiece() {
     // Implement hold piece logic
   }

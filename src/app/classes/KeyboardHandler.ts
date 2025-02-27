@@ -24,7 +24,7 @@ export class KeyboardHandler {
         this.gameRules.movePieceDown();
         break;
       case "ArrowUp":
-        // this.gameRules.rotatePiece();
+        this.gameRules.rotatePieceToNext();
         break;
       case " ":
         this.gameRules.movePieceDownFast();

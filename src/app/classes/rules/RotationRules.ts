@@ -8,7 +8,7 @@ export class RotationRules{
     this.gameRules = gameRules;
   }
 
-  rotateLeft(piece: Piece){
+  rotateRight(piece: Piece){
     const rotations = [...Rotations];
     const findedRotation = rotations.find(function(rotation){
       return rotation.name == piece.name;
@@ -20,10 +20,11 @@ export class RotationRules{
       piece.rotation = 0;
     }
 
-    return findedRotation?.rotations[piece.rotation+1];
+    return findedRotation?.rotations[piece.rotation];
   }
-  rotateRight(piece: Piece){
+  rotateLeft(piece: Piece){
     const rotations = [...Rotations];
+    
     const findedRotation = rotations.find(function(rotation){
       return rotation.name == piece.name;
     });
@@ -31,7 +32,7 @@ export class RotationRules{
     piece.rotation--;
 
     if(piece.rotation < 0){
-      piece.rotation = 0;
+      piece.rotation = piece.maxRotation;
     }
 
     return findedRotation?.rotations[piece.rotation];

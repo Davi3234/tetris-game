@@ -9,7 +9,8 @@ export class PieceFactory {
           [
             [1, 1, 1, 1]
           ],
-          "blue"
+          "blue",
+          1
         );
       case "O_Piece":
         return new Piece(
@@ -18,7 +19,8 @@ export class PieceFactory {
             [1, 1],
             [1, 1]
           ],
-          "yellow"
+          "yellow",
+          0
         );
       case "T_Piece":
         return new Piece(
@@ -27,7 +29,8 @@ export class PieceFactory {
             [0, 1, 0],
             [1, 1, 1]
           ],
-          "pink"
+          "pink",
+          3
         );
       case "J_Piece":
         return new Piece(
@@ -36,7 +39,8 @@ export class PieceFactory {
             [1, 0, 0],
             [1, 1, 1]
           ],
-          "blue"
+          "blue",
+          3
         );
       case "L_Piece":
         return new Piece(
@@ -45,7 +49,8 @@ export class PieceFactory {
             [0, 0, 1],
             [1, 1, 1]
           ],
-          "orange"
+          "orange",
+          3
         );
       case "S_Piece":
         return new Piece(
@@ -54,7 +59,8 @@ export class PieceFactory {
             [0, 1, 1], 
             [1, 1, 0]
           ],
-          "green"
+          "green",
+          1
         );
       case "Z_Piece":
         return new Piece(
@@ -63,7 +69,8 @@ export class PieceFactory {
             [1, 1, 0],
             [0, 1, 1]
           ],
-          "red"
+          "red",
+          1
         );
       default:
         throw new Error("Unknown piece type");
